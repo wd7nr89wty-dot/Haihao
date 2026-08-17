@@ -8,7 +8,12 @@
   "engineSystem": {
     "count": 4,
     "type": "Pratt & Whitney R-1830 Twin Wasp",
-    "startOrder": [0, 1, 2, 3],
+    "startOrder": [
+      0,
+      1,
+      2,
+      3
+    ],
     "profile": {
       "warmOilTemperatureC": 45,
       "maxTakeoffRpm": 2700,
