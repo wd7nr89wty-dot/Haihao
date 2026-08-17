@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://haihao.example/schemas/historical-architecture-region.schema.json",
+  "title": "Historical Architecture Regional Kit",
+  "type": "object",
+  "required": ["id", "region", "period", "coordinateSystem", "archetypes", "materials", "sources"],
+  "properties": {
+    "id": {"type": "string"},
+    "region": {"type": "object", "required": ["country", "province", "city"], "properties": {"country": {"type": "string"}, "province": {"type": "string"}, "city": {"type": "string"}}},
+    "period": {"type": "object", "required": ["from", "to"], "properties": {"from": {"type": "integer"}, "to": {"type": "integer"}}},
+    "coordinateSystem": {"const": "meters-y-up"},
+    "archetypes": {"type": "array", "items": {"$ref": "#/$defs/archetype"}},
+    "materials": {"type": "object"},
+    "sources": {"type": "array", "items": {"$ref": "#/$defs/source"}}
+  },
+  "$defs": {
+    "range": {"type": "object", "required": ["min", "max"], "properties": {"min": {"type": "number"}, "max": {"type": "number"}}},
+    "evidence": {"type": "object", "required": ["status", "confidence"], "properties": {"status": {"enum": ["documented", "regional_inference", "reconstruction_guess"]}, "confidence": {"type": "number", "minimum": 0, "maximum": 1}, "sourceIds": {"type": "array", "items": {"type": "string"}}}},
+    "archetype": {
+      "type": "object",
+      "required": ["id", "label", "footprint", "storeys", "roof", "wall", "evidence"],
+      "properties": {
+        "id": {"type": "string"}, "label": {"type": "string"},
+        "footprint": {"type": "object"}, "storeys": {"$ref": "#/$defs/range"},
+        "roof": {"type": "object"}, "wall": {"type": "object"}, "openings": {"type": "object"},
+        "generator": {"type": "object"}, "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    },
+    "source": {"type": "object", "required": ["id", "title", "publisher", "url"], "properties": {"id": {"type": "string"}, "title": {"type": "string"}, "publisher": {"type": "string"}, "url": {"type": "string", "format": "uri"}, "notes": {"type": "string"}}}
+  }
+}
