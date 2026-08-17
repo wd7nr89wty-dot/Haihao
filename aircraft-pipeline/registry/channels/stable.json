@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 2,
+  "channel": "stable",
+  "generatedAt": "2026-08-17T19:48:04Z",
+  "minimumAppVersion": "0.6.0",
+  "catalog": {
+    "version": "2026-08-17",
+    "manifest": "../catalog/aircraft.json"
+  },
+  "aircraft": {
+    "b24_liberator": {
+      "version": "1.2.0",
+      "manifest": "../aircraft/b24/1.2.0/manifest.json"
+    }
+  },
+  "skills": {
+    "aircraft-production": {
+      "version": "1.2.0",
+      "manifest": "../skills/aircraft-production/1.2.0/manifest.json"
+    }
+  },
+  "dependencies": {
+    "version": "2026.08.18.1",
+    "manifest": "../dependencies/2026.08.18.1/dependencies.json"
+  },
+  "activation": {
+    "aircraftData": "automatic-stage-safe-reload",
+    "skills": "atomic-sync-with-backup",
+    "dependencies": "ci-release-only",
+    "application": "signed-release-notification"
+  },
+  "signature": {
+    "schemaVersion": 1,
+    "keyId": "psar-release-2026-08",
+    "algorithm": "ECDSA_P256_SHA256",
+    "canonicalization": "PSAR-C14N-1",
+    "value": "GAAYm_Y5JBkb16EhBXlJ8NY5Ta1p1Es7vVMHDPnvyKfeVyckBV5blm0FRIGN-MpCqCVHZRS16Imh8wtaSt7GuA"
+  }
+}
