@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GAEA Build Job",
+  "type": "object",
+  "required": ["jobId", "projectId", "state", "inputs", "gaea", "outputs", "cleanup"],
+  "properties": {
+    "jobId": {"type": "string"},
+    "projectId": {"type": "string"},
+    "state": {"enum": ["queued", "claimed", "downloading", "building", "uploading", "completed", "failed", "cancelled"]},
+    "priority": {"type": "integer", "default": 100},
+    "createdAt": {"type": ["string", "null"], "format": "date-time"},
+    "claimedBy": {"type": ["string", "null"]},
+    "inputs": {
+      "type": "object",
+      "required": ["projectManifest", "graph"],
+      "properties": {
+        "projectManifest": {"type": "string"},
+        "graph": {"type": "string"},
+        "assets": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "gaea": {
+      "type": "object",
+      "required": ["executionMode", "graphFile"],
+      "properties": {
+        "executionMode": {"const": "windows-private-worker"},
+        "graphFile": {"type": "string"},
+        "buildProfile": {"type": "string"},
+        "timeoutMinutes": {"type": "integer", "minimum": 1}
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "required": ["uploadPrefix"],
+      "properties": {
+        "uploadPrefix": {"type": "string"},
+        "requiredFiles": {"type": "array", "items": {"type": "string"}},
+        "manifest": {"type": "string"}
+      }
+    },
+    "cleanup": {
+      "type": "object",
+      "required": ["deleteWorkspaceAfterUpload"],
+      "properties": {
+        "deleteWorkspaceAfterUpload": {"const": true},
+        "keepFailureLogs": {"type": "boolean", "default": true}
+      }
+    }
+  }
+}
