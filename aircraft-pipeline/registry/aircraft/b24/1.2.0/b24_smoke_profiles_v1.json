@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "psar-radial-engine-smoke",
+  "version": "1.0.0",
+  "profiles": {
+    "off": {
+      "emissionRate": 0,
+      "opacity": 0,
+      "temperatureK": 293,
+      "description": "No visible exhaust."
+    },
+    "startupOilBurnoff": {
+      "emissionRate": 34,
+      "opacity": 0.34,
+      "temperatureK": 520,
+      "color": [
+        0.36,
+        0.4,
+        0.43
+      ],
+      "lifetimeSeconds": [
+        2.2,
+        6.5
+      ],
+      "pulseJitter": 0.72
+    },
+    "coldIdle": {
+      "emissionRate": 8,
+      "opacity": 0.12,
+      "temperatureK": 620,
+      "color": [
+        0.42,
+        0.45,
+        0.46
+      ],
+      "lifetimeSeconds": [
+        1.4,
+        3.2
+      ],
+      "pulseJitter": 0.25
+    },
+    "warmTaxi": {
+      "emissionRate": 2,
+      "opacity": 0.045,
+      "temperatureK": 700,
+      "color": [
+        0.55,
+        0.56,
+        0.55
+      ],
+      "lifetimeSeconds": [
+        0.7,
+        1.6
+      ],
+      "heatDistortion": 0.55
+    },
+    "runUp": {
+      "emissionRate": 7,
+      "opacity": 0.09,
+      "temperatureK": 900,
+      "color": [
+        0.38,
+        0.39,
+        0.38
+      ],
+      "lifetimeSeconds": [
+        0.5,
+        1.2
+      ],
+      "heatDistortion": 0.9
+    },
+    "takeoffPower": {
+      "emissionRate": 4,
+      "opacity": 0.065,
+      "temperatureK": 1050,
+      "color": [
+        0.34,
+        0.35,
+        0.34
+      ],
+      "lifetimeSeconds": [
+        0.35,
+        0.9
+      ],
+      "heatDistortion": 1.0
+    },
+    "cruiseHeatOnly": {
+      "emissionRate": 0.5,
+      "opacity": 0.012,
+      "temperatureK": 820,
+      "color": [
+        0.65,
+        0.65,
+        0.62
+      ],
+      "lifetimeSeconds": [
+        0.2,
+        0.55
+      ],
+      "heatDistortion": 0.72
+    },
+    "shutdownResidual": {
+      "emissionRate": 4,
+      "opacity": 0.07,
+      "temperatureK": 510,
+      "color": [
+        0.52,
+        0.53,
+        0.52
+      ],
+      "lifetimeSeconds": [
+        0.8,
+        2.2
+      ],
+      "decaySeconds": 8
+    },
+    "oilBurningFault": {
+      "emissionRate": 42,
+      "opacity": 0.48,
+      "temperatureK": 690,
+      "color": [
+        0.18,
+        0.24,
+        0.31
+      ],
+      "lifetimeSeconds": [
+        3.5,
+        8.0
+      ]
+    },
+    "richMixtureFault": {
+      "emissionRate": 48,
+      "opacity": 0.58,
+      "temperatureK": 760,
+      "color": [
+        0.12,
+        0.13,
+        0.13
+      ],
+      "lifetimeSeconds": [
+        2.5,
+        6.5
+      ]
+    },
+    "nacelleFire": {
+      "emissionRate": 85,
+      "opacity": 0.78,
+      "temperatureK": 1150,
+      "color": [
+        0.06,
+        0.06,
+        0.055
+      ],
+      "lifetimeSeconds": [
+        4.5,
+        11.0
+      ],
+      "flame": true
+    }
+  },
+  "runtimeRules": {
+    "normalFlightPrefersHeatDistortion": true,
+    "healthyEnginesMustNotCreatePersistentBlackTrails": true,
+    "emittersFollowIndividualEngineJoints": true,
+    "velocityComponents": [
+      "exhaust",
+      "ambientWind",
+      "negativeAircraftVelocity",
+      "propellerSlipstream",
+      "buoyancy"
+    ]
+  }
+}
