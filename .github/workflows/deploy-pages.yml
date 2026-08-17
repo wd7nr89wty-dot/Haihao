@@ -17,20 +17,17 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
 
-      - name: Assemble public site
+      - name: Assemble and verify public site
         shell: bash
         run: |
           set -euo pipefail
@@ -65,11 +62,21 @@ jobs:
 
           grep -q '0.4.0-public-preview' _site/project-config.json
           grep -q '桂林秧塘机场地形工程' _site/index.html
+          test -s _site/architecture/index.html
+          test -s _site/architecture/app.js
 
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
