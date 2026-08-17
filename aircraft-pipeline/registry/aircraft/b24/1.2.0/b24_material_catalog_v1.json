@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "b24-openpbr-materials",
+  "version": "1.0.0",
+  "materials": {
+    "B24BareAluminum": {
+      "baseColor": [
+        0.72,
+        0.74,
+        0.75
+      ],
+      "metalness": 1.0,
+      "roughness": 0.31,
+      "anisotropy": 0.42,
+      "coatWeight": 0.0
+    },
+    "B24BrushedAluminum": {
+      "baseColor": [
+        0.68,
+        0.7,
+        0.71
+      ],
+      "metalness": 1.0,
+      "roughness": 0.38,
+      "anisotropy": 0.74,
+      "anisotropyRotationSource": "tangent"
+    },
+    "B24MatteExteriorPaint": {
+      "baseColor": [
+        0.25,
+        0.28,
+        0.2
+      ],
+      "metalness": 0.0,
+      "roughness": 0.72,
+      "coatWeight": 0.06,
+      "coatRoughness": 0.58
+    },
+    "B24FabricControlSurface": {
+      "baseColor": [
+        0.24,
+        0.26,
+        0.19
+      ],
+      "metalness": 0.0,
+      "roughness": 0.86,
+      "sheenWeight": 0.18,
+      "fuzzWeight": 0.13
+    },
+    "B24PlexiglassClear": {
+      "baseColor": [
+        0.97,
+        0.985,
+        1.0
+      ],
+      "metalness": 0.0,
+      "roughness": 0.045,
+      "transmissionWeight": 0.96,
+      "ior": 1.49,
+      "thicknessMeters": 0.008,
+      "dispersion": 0.0
+    },
+    "B24PlexiglassAged": {
+      "baseColor": [
+        0.93,
+        0.91,
+        0.82
+      ],
+      "metalness": 0.0,
+      "roughness": 0.12,
+      "transmissionWeight": 0.88,
+      "ior": 1.49,
+      "thicknessMeters": 0.008,
+      "attenuationDistanceMeters": 2.8
+    },
+    "B24RubberTire": {
+      "baseColor": [
+        0.025,
+        0.027,
+        0.028
+      ],
+      "metalness": 0.0,
+      "roughness": 0.91,
+      "sheenWeight": 0.04
+    },
+    "B24OiledSteel": {
+      "baseColor": [
+        0.16,
+        0.17,
+        0.18
+      ],
+      "metalness": 0.92,
+      "roughness": 0.36,
+      "coatWeight": 0.12,
+      "coatRoughness": 0.21
+    },
+    "B24FactoryConcrete": {
+      "baseColor": [
+        0.3,
+        0.31,
+        0.29
+      ],
+      "metalness": 0.0,
+      "roughness": 0.89
+    }
+  },
+  "gltfExtensions": [
+    "KHR_materials_clearcoat",
+    "KHR_materials_sheen",
+    "KHR_materials_anisotropy",
+    "KHR_materials_iridescence",
+    "KHR_materials_transmission",
+    "KHR_materials_volume",
+    "KHR_materials_ior",
+    "KHR_materials_specular",
+    "KHR_materials_dispersion",
+    "KHR_materials_emissive_strength",
+    "KHR_materials_variants",
+    "KHR_texture_transform",
+    "KHR_texture_basisu",
+    "KHR_lights_punctual",
+    "EXT_meshopt_compression"
+  ]
+}

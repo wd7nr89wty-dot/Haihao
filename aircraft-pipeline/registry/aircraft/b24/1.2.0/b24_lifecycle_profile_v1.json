@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "profileId": "psar-fixed-wing-lifecycle-v1",
+  "aircraftId": "b24_liberator",
+  "version": "1.0.0",
+  "units": {
+    "speed": "m/s",
+    "altitude": "m",
+    "time": "s"
+  },
+  "phases": [
+    {
+      "id": "COLD_PARKED",
+      "domain": "ground",
+      "engines": "off",
+      "smoke": "off",
+      "entry": [
+        "weightOnWheels",
+        "groundSpeed<=0.5"
+      ]
+    },
+    {
+      "id": "PRESTART",
+      "domain": "ground",
+      "engines": "off",
+      "smoke": "off",
+      "entry": [
+        "command=start"
+      ]
+    },
+    {
+      "id": "ENGINE_START_SEQUENCE",
+      "domain": "ground",
+      "engines": "sequential-start",
+      "smoke": "startupOilBurnoff",
+      "entry": [
+        "prestartComplete"
+      ]
+    },
+    {
+      "id": "WARMUP",
+      "domain": "ground",
+      "engines": "cold-idle",
+      "smoke": "coldIdle",
+      "entry": [
+        "allRequiredEnginesRunning"
+      ]
+    },
+    {
+      "id": "IDLE_READY",
+      "domain": "ground",
+      "engines": "warm-idle",
+      "smoke": "warmTaxi",
+      "entry": [
+        "oilTemperatureReady"
+      ]
+    },
+    {
+      "id": "TAXI_OUT",
+      "domain": "ground",
+      "engines": "taxi-power",
+      "smoke": "warmTaxi",
+      "entry": [
+        "command=taxi"
+      ]
+    },
+    {
+      "id": "RUN_UP",
+      "domain": "ground",
+      "engines": "run-up",
+      "smoke": "runUp",
+      "entry": [
+        "command=takeoff",
+        "brakesHeld"
+      ]
+    },
+    {
+      "id": "LINE_UP",
+      "domain": "ground",
+      "engines": "taxi-power",
+      "smoke": "warmTaxi",
+      "entry": [
+        "runUpComplete"
+      ]
+    },
+    {
+      "id": "TAKEOFF_ROLL",
+      "domain": "ground",
+      "engines": "takeoff-power",
+      "smoke": "takeoffPower",
+      "entry": [
+        "throttle>=0.9"
+      ]
+    },
+    {
+      "id": "ROTATION",
+      "domain": "transition",
+      "engines": "takeoff-power",
+      "smoke": "takeoffPower",
+      "entry": [
+        "airSpeed>=rotationSpeed"
+      ]
+    },
+    {
+      "id": "LIFTOFF",
+      "domain": "transition",
+      "engines": "takeoff-power",
+      "smoke": "takeoffPower",
+      "entry": [
+        "weightOnWheels=false"
+      ]
+    },
+    {
+      "id": "INITIAL_CLIMB",
+      "domain": "air",
+      "engines": "takeoff-power",
+      "smoke": "takeoffPower",
+      "entry": [
+        "positiveClimb"
+      ]
+    },
+    {
+      "id": "CLIMB",
+      "domain": "air",
+      "engines": "climb-power",
+      "smoke": "cruiseHeatOnly",
+      "entry": [
+        "safeGearRetraction"
+      ]
+    },
+    {
+      "id": "CRUISE",
+      "domain": "air",
+      "engines": "cruise-power",
+      "smoke": "cruiseHeatOnly",
+      "entry": [
+        "command=cruise"
+      ]
+    },
+    {
+      "id": "DESCENT",
+      "domain": "air",
+      "engines": "descent-power",
+      "smoke": "cruiseHeatOnly",
+      "entry": [
+        "command=land"
+      ]
+    },
+    {
+      "id": "APPROACH",
+      "domain": "air",
+      "engines": "approach-power",
+      "smoke": "cruiseHeatOnly",
+      "entry": [
+        "gearDown",
+        "approachConfigured"
+      ]
+    },
+    {
+      "id": "FLARE",
+      "domain": "transition",
+      "engines": "idle",
+      "smoke": "warmTaxi",
+      "entry": [
+        "radioAltitudeLow"
+      ]
+    },
+    {
+      "id": "TOUCHDOWN",
+      "domain": "transition",
+      "engines": "idle",
+      "smoke": "warmTaxi",
+      "entry": [
+        "weightOnWheels=true"
+      ]
+    },
+    {
+      "id": "LANDING_ROLL",
+      "domain": "ground",
+      "engines": "idle",
+      "smoke": "warmTaxi",
+      "entry": [
+        "groundSpeed>taxiSpeed"
+      ]
+    },
+    {
+      "id": "TAXI_IN",
+      "domain": "ground",
+      "engines": "taxi-power",
+      "smoke": "warmTaxi",
+      "entry": [
+        "groundSpeed<=taxiSpeed"
+      ]
+    },
+    {
+      "id": "SHUTDOWN",
+      "domain": "ground",
+      "engines": "shutting-down",
+      "smoke": "shutdownResidual",
+      "entry": [
+        "command=shutdown"
+      ]
+    },
+    {
+      "id": "HOT_PARKED",
+      "domain": "ground",
+      "engines": "off-hot",
+      "smoke": "shutdownResidual",
+      "entry": [
+        "allEnginesStopped"
+      ]
+    }
+  ],
+  "faultOverrides": {
+    "oilBurning": "oilBurningFault",
+    "richMixture": "richMixtureFault",
+    "nacelleFire": "nacelleFire"
+  },
+  "rules": {
+    "meshLodSwitching": false,
+    "engineStateIndependent": true,
+    "flightPhaseDerivedFromState": true,
+    "visualEffectsBoundToSemanticEmitters": true
+  },
+  "calibration": {
+    "status": "simulation-baseline",
+    "variantSpecificThresholdsMustRemainInAircraftProfile": true
+  }
+}

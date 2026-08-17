@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "status": "review-bootstrap-incomplete",
+  "applicationVersion": "0.6.0",
+  "aircraftPackageVersion": "1.2.0",
+  "branch": "agent/psar-v0.6-bootstrap",
+  "safeToMerge": false,
+  "publishedScopes": [
+    "registry-index",
+    "stable-beta-dev-channels",
+    "seven-aircraft-catalog",
+    "b24-package-manifest",
+    "b24-profile",
+    "b24-lifecycle",
+    "b24-system-map",
+    "b24-assembly-profile",
+    "b24-effects-profile",
+    "b24-smoke-profiles",
+    "b24-material-catalog",
+    "b24-source-register",
+    "aircraft-production-skill",
+    "dependency-lock",
+    "technical-source-register"
+  ],
+  "remainingPublicationGates": [
+    {
+      "id": "full-application-source",
+      "required": true,
+      "delivery": "authenticated-monorepo-publish-script"
+    },
+    {
+      "id": "b24-progressive-rig",
+      "required": true,
+      "bytes": 134509,
+      "sha256": "abfc4f75bf7359a51d68e93b218875a070e937346ad69adcb481f298eb6508a0"
+    },
+    {
+      "id": "secure-metadata-complete-set",
+      "required": true,
+      "expected": {
+        "rootVersion": 1,
+        "timestampVersion": 7,
+        "snapshotVersion": 6,
+        "targetsVersion": 6,
+        "authorizedTargets": 51
+      }
+    },
+    {
+      "id": "b24-authoritative-glb",
+      "required": true,
+      "bytes": 23085972,
+      "sha256": "541c3dcfb98ab590cdb1bc90d6ddcdfe80bce2a4b937f3bccefab0c7efe8be0d",
+      "delivery": "Cloudflare-R2-or-authenticated-git-publish"
+    },
+    {
+      "id": "b24-verified-model-chunks",
+      "required": true,
+      "count": 6,
+      "delivery": "Cloudflare-R2-or-authenticated-git-publish"
+    },
+    {
+      "id": "remote-integrity-test",
+      "required": true,
+      "checks": [
+        "signature",
+        "byte-count",
+        "sha256",
+        "whole-model-reconstruction",
+        "safe-rollback"
+      ]
+    }
+  ],
+  "privateKeyInRepository": false,
+  "mainBranchChanged": false
+}

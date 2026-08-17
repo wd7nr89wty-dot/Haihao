@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "aircraftId": "b24_liberator",
+  "version": "1.2.0",
+  "targetVariantStatus": "provisional-early-liberator-reference",
+  "sources": [
+    {
+      "id": "usaf-b24d-fact-sheet",
+      "organization": "National Museum of the United States Air Force",
+      "title": "Consolidated B-24D Liberator",
+      "url": "https://www.nationalmuseum.af.mil/Visit/Museum-Exhibits/Fact-Sheets/Display/Article/196286/consolidated-b-24d-liberator/",
+      "sourceType": "museum-fact-sheet",
+      "usedFor": [
+        "family dimensions",
+        "engine count",
+        "B-24D comparison"
+      ],
+      "confidence": 0.95,
+      "variantScope": "B-24D"
+    },
+    {
+      "id": "museum-of-flight-b24-training-manual",
+      "organization": "The Museum of Flight",
+      "title": "Pilot Training Manual for the Liberator B-24",
+      "url": "https://digitalcollections.museumofflight.org/nodes/view/2825/",
+      "sourceType": "digitized-primary-manual",
+      "usedFor": [
+        "operational phase vocabulary",
+        "startup",
+        "taxi",
+        "takeoff",
+        "flight",
+        "landing"
+      ],
+      "confidence": 0.98,
+      "variantScope": "B-24 family, 1945 revision"
+    },
+    {
+      "id": "smithsonian-r1830",
+      "organization": "Smithsonian National Air and Space Museum",
+      "title": "Pratt & Whitney Twin Wasp R-1830-92 Radial Engine",
+      "url": "https://airandspace.si.edu/collection-objects/pratt-whitney-twin-wasp-r-1830-92-radial-engine/nasm_A19750478000",
+      "sourceType": "museum-collection-record",
+      "usedFor": [
+        "engine family",
+        "radial architecture",
+        "powerplant reference"
+      ],
+      "confidence": 0.96,
+      "variantScope": "R-1830-92"
+    },
+    {
+      "id": "henry-ford-willow-run-flow",
+      "organization": "The Henry Ford",
+      "title": "B-24 Bomber Production Flow Chart, Willow Run, 1944",
+      "url": "https://www.thehenryford.org/collections/explore/artifact/372274/",
+      "sourceType": "museum-archive-production-record",
+      "usedFor": [
+        "assembly flow",
+        "parallel lines",
+        "major joining sequence"
+      ],
+      "confidence": 0.96,
+      "variantScope": "Willow Run production"
+    },
+    {
+      "id": "loc-willow-run-photographs",
+      "organization": "Library of Congress",
+      "title": "Consolidated B-24 Liberator Bombers at Willow Run",
+      "url": "https://www.loc.gov/pictures/item/2004680763/",
+      "sourceType": "government-photo-archive",
+      "usedFor": [
+        "factory environment",
+        "tooling",
+        "workstation appearance",
+        "production photography"
+      ],
+      "confidence": 0.95,
+      "variantScope": "Willow Run, 1942 to 1943"
+    },
+    {
+      "id": "caf-diamond-lil",
+      "organization": "Commemorative Air Force",
+      "title": "Diamond Lil",
+      "url": "https://commemorativeairforce.org/aircraft/3",
+      "sourceType": "operator-airframe-record",
+      "usedFor": [
+        "visual restoration identity hypothesis",
+        "early Liberator comparison"
+      ],
+      "confidence": 0.72,
+      "variantScope": "Diamond Lil restoration"
+    },
+    {
+      "id": "source-glb-sketchfab",
+      "organization": "Sketchfab",
+      "title": "B-24 Liberator by CreadorDeMu",
+      "url": "https://sketchfab.com/3d-models/b-24-liberator-c64e58edfacb4c519b5602278a7e51aa",
+      "sourceType": "uploaded-model-provenance",
+      "usedFor": [
+        "visual model",
+        "node hierarchy",
+        "mechanical animation reference"
+      ],
+      "confidence": 1.0,
+      "license": "CC BY 4.0",
+      "localSha256": "541c3dcfb98ab590cdb1bc90d6ddcdfe80bce2a4b937f3bccefab0c7efe8be0d"
+    },
+    {
+      "id": "img2threejs-skill-reference",
+      "organization": "img2threejs",
+      "title": "img2threejs",
+      "url": "https://github.com/img2threejs/img2threejs",
+      "sourceType": "open-source-skill-reference",
+      "usedFor": [
+        "semantic decomposition",
+        "component hierarchy",
+        "pivots",
+        "sockets",
+        "quality gates",
+        "GLB-mediated render-fidelity track",
+        "resumable reconstruction state"
+      ],
+      "confidence": 0.9,
+      "license": "Apache-2.0",
+      "pinnedCommit": "d6673386f89673a58736f8d398dd16ece67874f5",
+      "observedVersion": "1.4.4 with v1.5 beta track in main",
+      "checkedAt": "2026-08-18T00:00:00Z"
+    },
+    {
+      "id": "openpbr-specification",
+      "organization": "Academy Software Foundation",
+      "title": "OpenPBR Surface Specification",
+      "url": "https://academysoftwarefoundation.github.io/OpenPBR/",
+      "sourceType": "material-standard",
+      "usedFor": [
+        "material parameter model"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "gltf-2-specification",
+      "organization": "Khronos Group",
+      "title": "glTF 2.0 Specification",
+      "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+      "sourceType": "format-standard",
+      "usedFor": [
+        "asset interchange",
+        "KHR extension preservation"
+      ],
+      "confidence": 0.99
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "exact-variant",
+      "description": "The uploaded visual model has not been locked to one production B-24 variant.",
+      "status": "open",
+      "requiredEvidence": [
+        "nose configuration",
+        "turret fit",
+        "serial-specific restoration record"
+      ]
+    },
+    {
+      "id": "engine-start-order",
+      "description": "The prototype engine start order remains simulation data until the target variant checklist is selected.",
+      "status": "open"
+    },
+    {
+      "id": "smoke-calibration",
+      "description": "Smoke duration, density, and color are visual simulation parameters pending airframe-specific film calibration.",
+      "status": "open"
+    },
+    {
+      "id": "skill-upstream-drift",
+      "description": "The upstream img2threejs skill can advance independently. Stable PSAR releases pin a reviewed commit and surface newer commits for manual review before promotion.",
+      "status": "managed-by-update-monitor"
+    }
+  ],
+  "implementationEvidence": [
+    {
+      "id": "psar-runtime-plugin-v1",
+      "scope": [
+        "model-specific node binding",
+        "animation-channel mapping"
+      ],
+      "status": "implemented",
+      "historicalClaim": false
+    },
+    {
+      "id": "psar-chunk-delivery-v1",
+      "scope": [
+        "per-chunk SHA-256",
+        "final asset SHA-256",
+        "cache recovery"
+      ],
+      "status": "implemented",
+      "historicalClaim": false
+    },
+    {
+      "id": "psar-progressive-scheduler-v1",
+      "scope": [
+        "screen-space update budget",
+        "focus branch promotion",
+        "single mesh identity"
+      ],
+      "status": "implemented",
+      "historicalClaim": false
+    }
+  ]
+}

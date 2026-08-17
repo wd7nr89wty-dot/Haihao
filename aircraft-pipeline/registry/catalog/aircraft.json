@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "psar-world-war-ii-aircraft",
+  "generatedAt": "2026-08-17T19:55:55Z",
+  "defaultAircraftId": "b24_liberator",
+  "aircraft": [
+    {
+      "aircraftId": "b24_liberator",
+      "label": "B-24 Liberator",
+      "manufacturer": "Consolidated Aircraft",
+      "role": "heavy-bomber",
+      "status": "available",
+      "currentVersion": "1.2.0",
+      "rigSystem": "PSAR",
+      "engineCount": 4,
+      "modelAsset": "bundled-and-online",
+      "packageSchemaVersion": 3
+    },
+    {
+      "aircraftId": "b17_flying_fortress",
+      "label": "B-17 Flying Fortress",
+      "status": "planned",
+      "rigSystem": "PSAR"
+    },
+    {
+      "aircraftId": "b25_mitchell",
+      "label": "B-25 Mitchell",
+      "status": "planned",
+      "rigSystem": "PSAR"
+    },
+    {
+      "aircraftId": "c47_skytrain",
+      "label": "C-47 Skytrain",
+      "status": "planned",
+      "rigSystem": "PSAR"
+    },
+    {
+      "aircraftId": "p38_lightning",
+      "label": "P-38 Lightning",
+      "status": "planned",
+      "rigSystem": "PSAR"
+    },
+    {
+      "aircraftId": "p40_warhawk",
+      "label": "P-40 Warhawk",
+      "status": "planned",
+      "rigSystem": "PSAR"
+    },
+    {
+      "aircraftId": "p51_mustang",
+      "label": "P-51 Mustang",
+      "status": "planned",
+      "rigSystem": "PSAR"
+    }
+  ],
+  "packageContract": {
+    "requiredAssets": [
+      "rig",
+      "profile",
+      "lifecycleProfile",
+      "systemMap",
+      "assemblyProfile",
+      "effectsProfile",
+      "smokeProfiles",
+      "materialCatalog",
+      "sourceRegister",
+      "model"
+    ],
+    "requiredLifecycleDomains": [
+      "parked",
+      "start",
+      "taxi",
+      "takeoff",
+      "flight",
+      "landing",
+      "shutdown"
+    ],
+    "noMeshLodSwitching": true,
+    "signedManifestsRequired": true,
+    "secureMetadataRequired": true
+  },
+  "signature": {
+    "schemaVersion": 1,
+    "keyId": "psar-release-2026-08",
+    "algorithm": "ECDSA_P256_SHA256",
+    "canonicalization": "PSAR-C14N-1",
+    "value": "5OG0_hQLuAxhnjpGrQyHITneSAkeY8rW9aWhANcek839I215egQcg2nC3XWWo1BjB9-nN8uwwzf6BmdXBmgtSg"
+  }
+}

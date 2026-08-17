@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "profileId": "b24-production-assembly-v1",
+  "aircraftId": "b24_liberator",
+  "version": "1.0.0",
+  "units": {
+    "distance": "meter",
+    "time": "second"
+  },
+  "historicalBasis": {
+    "primarySourceIds": [
+      "henry-ford-willow-run-flow",
+      "loc-willow-run-photographs"
+    ],
+    "interpretation": "Major joins follow archived Willow Run evidence. Station grouping, timings, and UI behavior are simulation abstractions."
+  },
+  "stageOrder": [
+    "datum_and_jig",
+    "fuselage_jig",
+    "fuselage_structure",
+    "wing_structure",
+    "primary_structure",
+    "landing_gear_installation",
+    "engine_installation",
+    "propeller_installation",
+    "control_surface_installation",
+    "payload_installation",
+    "electrical_installation",
+    "systems_installation",
+    "skin_and_finish",
+    "final_assembly",
+    "ground_test",
+    "flight_test"
+  ],
+  "stages": [
+    {
+      "id": "datum_and_jig",
+      "label": "工装与基准",
+      "dependencies": [],
+      "stationType": "tooling",
+      "systemScopes": [
+        "aircraft_root"
+      ],
+      "materialState": "raw",
+      "qualityGates": [
+        "datum-frame-established"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "fuselage_jig",
+      "label": "机身夹具",
+      "dependencies": [
+        "datum_and_jig"
+      ],
+      "stationType": "fuselage-line",
+      "systemScopes": [
+        "fuselage"
+      ],
+      "materialState": "raw",
+      "qualityGates": [
+        "fuselage-jig-alignment"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "fuselage_structure",
+      "label": "机身结构",
+      "dependencies": [
+        "fuselage_jig"
+      ],
+      "stationType": "fuselage-line",
+      "systemScopes": [
+        "fuselage",
+        "cockpit"
+      ],
+      "materialState": "raw",
+      "qualityGates": [
+        "frames-stringers-complete",
+        "fuselage-datum-check"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "wing_structure",
+      "label": "机翼结构",
+      "dependencies": [
+        "datum_and_jig"
+      ],
+      "stationType": "wing-line",
+      "systemScopes": [
+        "center_wing",
+        "left_wing",
+        "right_wing"
+      ],
+      "materialState": "raw",
+      "qualityGates": [
+        "spar-continuity",
+        "rib-spacing-check"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "primary_structure",
+      "label": "主结构结合",
+      "dependencies": [
+        "fuselage_structure",
+        "wing_structure"
+      ],
+      "stationType": "major-join",
+      "systemScopes": [
+        "fuselage",
+        "center_wing",
+        "left_wing",
+        "right_wing",
+        "tail"
+      ],
+      "materialState": "raw",
+      "qualityGates": [
+        "wing-fuselage-datum",
+        "tail-alignment"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "landing_gear_installation",
+      "label": "起落架安装",
+      "dependencies": [
+        "primary_structure"
+      ],
+      "stationType": "mechanical-install",
+      "systemScopes": [
+        "landing_gear"
+      ],
+      "materialState": "primed",
+      "qualityGates": [
+        "gear-cycle-clearance",
+        "wheel-alignment"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "engine_installation",
+      "label": "发动机安装",
+      "dependencies": [
+        "primary_structure"
+      ],
+      "stationType": "powerplant-install",
+      "systemScopes": [
+        "propulsion"
+      ],
+      "materialState": "primed",
+      "qualityGates": [
+        "mount-torque",
+        "control-cable-routing",
+        "fuel-oil-connections"
+      ],
+      "confidence": 0.83
+    },
+    {
+      "id": "propeller_installation",
+      "label": "螺旋桨安装",
+      "dependencies": [
+        "engine_installation"
+      ],
+      "stationType": "powerplant-install",
+      "systemScopes": [
+        "propellers"
+      ],
+      "materialState": "painted",
+      "qualityGates": [
+        "blade-clearance",
+        "feather-range"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "control_surface_installation",
+      "label": "操纵面安装",
+      "dependencies": [
+        "primary_structure"
+      ],
+      "stationType": "flight-control-install",
+      "systemScopes": [
+        "flight_controls"
+      ],
+      "materialState": "fabric-finished",
+      "qualityGates": [
+        "hinge-free-play",
+        "travel-range",
+        "neutral-rigging"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "payload_installation",
+      "label": "载荷系统安装",
+      "dependencies": [
+        "fuselage_structure"
+      ],
+      "stationType": "mission-system-install",
+      "systemScopes": [
+        "bomb_bay",
+        "defensive_systems"
+      ],
+      "materialState": "primed",
+      "qualityGates": [
+        "door-clearance",
+        "rack-lock-check"
+      ],
+      "confidence": 0.76
+    },
+    {
+      "id": "electrical_installation",
+      "label": "电气安装",
+      "dependencies": [
+        "fuselage_structure",
+        "wing_structure"
+      ],
+      "stationType": "systems-install",
+      "systemScopes": [
+        "electrical",
+        "lighting"
+      ],
+      "materialState": "primed",
+      "qualityGates": [
+        "continuity-test",
+        "load-test"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "systems_installation",
+      "label": "机内系统安装",
+      "dependencies": [
+        "engine_installation",
+        "electrical_installation"
+      ],
+      "stationType": "systems-install",
+      "systemScopes": [
+        "fuel",
+        "hydraulic",
+        "control_transmission"
+      ],
+      "materialState": "primed",
+      "qualityGates": [
+        "leak-test",
+        "pressure-test",
+        "control-continuity"
+      ],
+      "confidence": 0.79
+    },
+    {
+      "id": "skin_and_finish",
+      "label": "蒙皮与表面处理",
+      "dependencies": [
+        "primary_structure",
+        "systems_installation"
+      ],
+      "stationType": "surface-line",
+      "systemScopes": [
+        "airframe_skin"
+      ],
+      "materialState": "painted",
+      "qualityGates": [
+        "fastener-inspection",
+        "surface-finish",
+        "marking-conformance"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "final_assembly",
+      "label": "最终总装",
+      "dependencies": [
+        "landing_gear_installation",
+        "propeller_installation",
+        "control_surface_installation",
+        "payload_installation",
+        "skin_and_finish"
+      ],
+      "stationType": "final-line",
+      "systemScopes": [
+        "all"
+      ],
+      "materialState": "assembled",
+      "qualityGates": [
+        "configuration-audit",
+        "foreign-object-inspection"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "ground_test",
+      "label": "地面试车",
+      "dependencies": [
+        "final_assembly"
+      ],
+      "stationType": "test-cell",
+      "systemScopes": [
+        "propulsion",
+        "flight_controls",
+        "landing_gear",
+        "electrical"
+      ],
+      "materialState": "operational",
+      "qualityGates": [
+        "engine-start",
+        "engine-run-up",
+        "brake-test",
+        "control-sweep"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "flight_test",
+      "label": "试飞交付",
+      "dependencies": [
+        "ground_test"
+      ],
+      "stationType": "flight-line",
+      "systemScopes": [
+        "all"
+      ],
+      "materialState": "delivered",
+      "qualityGates": [
+        "taxi-check",
+        "takeoff-climb",
+        "systems-check",
+        "approach-landing"
+      ],
+      "confidence": 0.88
+    }
+  ],
+  "runtime": {
+    "meshLodSwitching": false,
+    "stageVisibilityMode": "semantic-component-filter",
+    "futurePartOpacity": 0.08,
+    "currentStageHighlight": true,
+    "completedPartMaterial": "production-state",
+    "progressiveRigFollowsStage": true
+  }
+}

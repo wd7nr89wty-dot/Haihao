@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 2,
+  "packageType": "dependency-lock",
+  "version": "2026.08.18.1",
+  "generatedAt": "2026-08-17T20:06:28Z",
+  "policy": "pull-request-ci-release",
+  "runtime": {
+    "three": {
+      "version": "0.185.1",
+      "npm": "three@0.185.1",
+      "license": "MIT",
+      "npmIntegrity": "sha512-5aojFCXKwnjBRZvUnt3WFfEcvUJgkN5LlijRFN95hMy8WVkG4I0QNcJE+OuWvuJ0bOdStrbfXn0pkd6/QyiAlg==",
+      "browserImports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.webgpu.js",
+        "three/webgpu": "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.webgpu.js",
+        "three/tsl": "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.tsl.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.185.1/examples/jsm/"
+      },
+      "delivery": {
+        "primary": "jsDelivr exact-version ESM",
+        "serviceWorkerCache": "psar-dependencies-three-0.185.1",
+        "offlineAfterCache": true,
+        "runtimeHotSwap": false
+      }
+    }
+  },
+  "tooling": {
+    "pythonCryptography": {
+      "version": "46.0.4",
+      "package": "cryptography==46.0.4",
+      "purpose": [
+        "registry-signing",
+        "registry-signature-verification"
+      ]
+    },
+    "pythonPyYAML": {
+      "version": "6.0.3",
+      "package": "PyYAML==6.0.3",
+      "purpose": [
+        "workflow-template-validation",
+        "monorepo-publication-tests"
+      ]
+    }
+  },
+  "skills": {
+    "img2threejs": {
+      "repository": "https://github.com/img2threejs/img2threejs",
+      "commit": "d6673386f89673a58736f8d398dd16ece67874f5",
+      "observedVersion": "1.4.4 with v1.5 beta track in main",
+      "license": "Apache-2.0",
+      "promotionPolicy": "manual-review-tests-beta-stable"
+    }
+  },
+  "automation": {
+    "dependabot": "weekly",
+    "upstreamSkillMonitor": "weekly",
+    "lockfileRequired": true,
+    "npmCiRequired": true,
+    "testsRequired": true,
+    "stableReleaseRequired": true,
+    "runtimeHotSwapAllowed": false,
+    "verifiedChunkDelivery": true,
+    "progressiveSemanticScheduler": true,
+    "aircraftPackageSdk": true,
+    "secureMetadataAutoRefresh": "three-day-check-seven-day-snapshot-threshold",
+    "signedTechnicalSourceRegister": true
+  },
+  "signature": {
+    "schemaVersion": 1,
+    "keyId": "psar-release-2026-08",
+    "algorithm": "ECDSA_P256_SHA256",
+    "canonicalization": "PSAR-C14N-1",
+    "value": "RmCAgvNe39xtT63fzVFvlbnPBzax4x4bNh73IFMVxwSBCzuLscVVY9Yle2P4Gc-2GW1oNVvS9VW4tPl7BGbodg"
+  }
+}

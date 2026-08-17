@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "packageType": "codex-skill",
+  "skillId": "aircraft-production",
+  "version": "1.2.0",
+  "generatedAt": "2026-08-17T20:06:28Z",
+  "entrypoint": "SKILL.md",
+  "compatibility": {
+    "minimumAppVersion": "0.6.0"
+  },
+  "upstreamDependencies": {
+    "img2threejs": "d6673386f89673a58736f8d398dd16ece67874f5"
+  },
+  "files": [
+    {
+      "path": "SKILL.md",
+      "bytes": 6157,
+      "sha256": "6298012b9c67ee5e2a15bc3ebdddbf6676065ab3460c5ad6cc379623fc7a7a22",
+      "contentType": "text/markdown",
+      "sources": [
+        {
+          "id": "registry",
+          "url": "./SKILL.md",
+          "priority": 10,
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "path": "references/aircraft-package-contract.md",
+      "bytes": 899,
+      "sha256": "39284ff805f0fedba2993103f8915919f6a2900f046030c3f10ca44d223bc572",
+      "contentType": "text/markdown",
+      "sources": [
+        {
+          "id": "registry",
+          "url": "./references/aircraft-package-contract.md",
+          "priority": 10,
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "path": "references/release-checklist.md",
+      "bytes": 922,
+      "sha256": "2b999e0db4abf1e612814ebd8441ed1364da657473bf0286b2d8af33c52abb6f",
+      "contentType": "text/markdown",
+      "sources": [
+        {
+          "id": "registry",
+          "url": "./references/release-checklist.md",
+          "priority": 10,
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "path": "references/upstream-skill-lock.json",
+      "bytes": 354,
+      "sha256": "022578e4fa1aee5e98088c5c096cb6be660c686aabb6d46ff4238371c9e13f67",
+      "contentType": "application/json",
+      "sources": [
+        {
+          "id": "registry",
+          "url": "./references/upstream-skill-lock.json",
+          "priority": 10,
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "signature": {
+    "schemaVersion": 1,
+    "keyId": "psar-release-2026-08",
+    "algorithm": "ECDSA_P256_SHA256",
+    "canonicalization": "PSAR-C14N-1",
+    "value": "jNRYDbjAHyBgEVH9x3KyLwHwT8HXyR0Q8cYLpdVhPohZme9AwLHivXutu28O1YzJkLw63-w3jbiA79jbyH7h9Q"
+  }
+}

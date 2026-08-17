@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "dependencyId": "img2threejs",
+  "repository": "https://github.com/img2threejs/img2threejs",
+  "ref": "d6673386f89673a58736f8d398dd16ece67874f5",
+  "observedVersion": "1.4.4 with v1.5 beta track in main",
+  "checkedAt": "2026-08-18T00:00:00Z",
+  "license": "Apache-2.0",
+  "promotionPolicy": "manual-review-tests-beta-stable"
+}
