@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 2,
+  "aircraftId": "b24_liberator",
+  "label": "B-24 Liberator",
+  "family": "B-24",
+  "variant": "B24_EARLY_DIAMOND_LIL_REFERENCE",
+  "profileVersion": "1.2.0",
+  "engineSystem": {
+    "count": 4,
+    "type": "Pratt & Whitney R-1830 Twin Wasp",
+    "startOrder": [0, 1, 2, 3],
+    "profile": {
+      "warmOilTemperatureC": 45,
+      "maxTakeoffRpm": 2700,
+      "cruiseRpm": 2100,
+      "ambientTemperatureC": 18
+    }
+  },
+  "operationProfile": {
+    "engineStartIntervalSeconds": 2.5,
+    "warmOilTemperatureC": 45,
+    "takeoffRotationSpeedMps": 51,
+    "cruiseAltitudeMeters": 120
+  },
+  "jointTemplates": {
+    "root": "engine{n}Root",
+    "exhaustPrimary": "engine{n}ExhaustPrimary",
+    "propeller": "engine{n}PropellerRotor"
+  },
+  "capabilities": {
+    "retractableLandingGear": true,
+    "twinVerticalTail": true,
+    "bombBay": true,
+    "engineCountVariableInCore": true,
+    "meshLodSwitching": false,
+    "onlineRegistry": true,
+    "verifiedRemoteAssets": true,
+    "signedRegistryManifests": true,
+    "multiAircraftCatalog": true,
+    "stagedOnlineUpdates": true,
+    "explicitRollback": true,
+    "verifiedChunkDelivery": true,
+    "dataDrivenSmokeCatalog": true,
+    "progressiveSemanticScheduling": true,
+    "aircraftPackageSdk": true
+  },
+  "evidence": {
+    "modelIdentityConfidence": 0.72,
+    "variantParametersRequireFurtherPrimarySourceCalibration": true,
+    "notes": [
+      "This runtime profile separates family, variant, airframe, and visual restoration data.",
+      "Prototype timing and performance values remain simulation tuning until a target B-24 variant is locked.",
+      "Package 1.1.0 adds signed online delivery, lifecycle data, and the universal system map without changing the source GLB geometry.",
+      "Package 1.2.0 adds model-specific runtime plug-ins, verified chunk delivery, data-driven smoke, and progressive semantic work scheduling without changing source geometry."
+    ]
+  },
+  "runtimePlugin": "psar-b24-runtime-v1"
+}
