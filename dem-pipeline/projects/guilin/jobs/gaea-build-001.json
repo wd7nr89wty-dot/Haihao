@@ -1,0 +1,37 @@
+{
+  "jobId": "guilin-gaea-001",
+  "projectId": "guilin",
+  "state": "queued",
+  "priority": 100,
+  "createdAt": null,
+  "claimedBy": null,
+  "inputs": {
+    "projectManifest": "projects/guilin/project.json",
+    "graph": "projects/guilin/gaea/graphs/guilin-master.tor",
+    "assets": [
+      "projects/guilin/sources/dem/regional/",
+      "projects/guilin/sources/dem/core/",
+      "projects/guilin/sources/vectors/"
+    ]
+  },
+  "gaea": {
+    "executionMode": "windows-private-worker",
+    "graphFile": "guilin-master.tor",
+    "buildProfile": "production",
+    "timeoutMinutes": 240
+  },
+  "outputs": {
+    "uploadPrefix": "projects/guilin/gaea/builds/guilin-gaea-001/",
+    "requiredFiles": [
+      "heightmap",
+      "terrain-masks",
+      "build-log",
+      "build-manifest.json"
+    ],
+    "manifest": "projects/guilin/gaea/builds/guilin-gaea-001/build-manifest.json"
+  },
+  "cleanup": {
+    "deleteWorkspaceAfterUpload": true,
+    "keepFailureLogs": true
+  }
+}
