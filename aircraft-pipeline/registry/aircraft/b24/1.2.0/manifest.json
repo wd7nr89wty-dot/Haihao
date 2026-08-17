@@ -30,7 +30,14 @@
       "contentType": "application/json",
       "immutable": true,
       "timeoutMs": 30000,
-      "sources": [{"id":"github-versioned","url":"./b24_progressive_aircraft_rig_v1.json","priority":20,"enabled":true}]
+      "sources": [
+        {
+          "id": "github-versioned",
+          "url": "./b24_progressive_aircraft_rig_v1.json",
+          "priority": 20,
+          "enabled": true
+        }
+      ]
     },
     "profile": {
       "path": "./b24_aircraft_profile_v1.json",
@@ -39,7 +46,14 @@
       "contentType": "application/json",
       "immutable": true,
       "timeoutMs": 30000,
-      "sources": [{"id":"github-versioned","url":"./b24_aircraft_profile_v1.json","priority":20,"enabled":true}]
+      "sources": [
+        {
+          "id": "github-versioned",
+          "url": "./b24_aircraft_profile_v1.json",
+          "priority": 20,
+          "enabled": true
+        }
+      ]
     },
     "lifecycleProfile": {
       "path": "./b24_lifecycle_profile_v1.json",
@@ -48,7 +62,14 @@
       "contentType": "application/json",
       "immutable": true,
       "timeoutMs": 30000,
-      "sources": [{"id":"github-versioned","url":"./b24_lifecycle_profile_v1.json","priority":20,"enabled":true}]
+      "sources": [
+        {
+          "id": "github-versioned",
+          "url": "./b24_lifecycle_profile_v1.json",
+          "priority": 20,
+          "enabled": true
+        }
+      ]
     },
     "systemMap": {
       "path": "./b24_system_map_v1.json",
@@ -57,7 +78,14 @@
       "contentType": "application/json",
       "immutable": true,
       "timeoutMs": 30000,
-      "sources": [{"id":"github-versioned","url":"./b24_system_map_v1.json","priority":20,"enabled":true}]
+      "sources": [
+        {
+          "id": "github-versioned",
+          "url": "./b24_system_map_v1.json",
+          "priority": 20,
+          "enabled": true
+        }
+      ]
     },
     "assemblyProfile": {
       "path": "./b24_assembly_profile_v1.json",
@@ -66,7 +94,14 @@
       "contentType": "application/json",
       "immutable": true,
       "timeoutMs": 30000,
-      "sources": [{"id":"github-versioned","url":"./b24_assembly_profile_v1.json","priority":20,"enabled":true}]
+      "sources": [
+        {
+          "id": "github-versioned",
+          "url": "./b24_assembly_profile_v1.json",
+          "priority": 20,
+          "enabled": true
+        }
+      ]
     },
     "effectsProfile": {
       "path": "./b24_effects_profile_v1.json",
@@ -75,7 +110,14 @@
       "contentType": "application/json",
       "immutable": true,
       "timeoutMs": 30000,
-      "sources": [{"id":"github-versioned","url":"./b24_effects_profile_v1.json","priority":20,"enabled":true}]
+      "sources": [
+        {
+          "id": "github-versioned",
+          "url": "./b24_effects_profile_v1.json",
+          "priority": 20,
+          "enabled": true
+        }
+      ]
     },
     "smokeProfiles": {
       "path": "./b24_smoke_profiles_v1.json",
@@ -84,7 +126,14 @@
       "contentType": "application/json",
       "immutable": true,
       "timeoutMs": 30000,
-      "sources": [{"id":"github-versioned","url":"./b24_smoke_profiles_v1.json","priority":20,"enabled":true}]
+      "sources": [
+        {
+          "id": "github-versioned",
+          "url": "./b24_smoke_profiles_v1.json",
+          "priority": 20,
+          "enabled": true
+        }
+      ]
     },
     "materialCatalog": {
       "path": "./b24_material_catalog_v1.json",
@@ -93,7 +142,14 @@
       "contentType": "application/json",
       "immutable": true,
       "timeoutMs": 30000,
-      "sources": [{"id":"github-versioned","url":"./b24_material_catalog_v1.json","priority":20,"enabled":true}]
+      "sources": [
+        {
+          "id": "github-versioned",
+          "url": "./b24_material_catalog_v1.json",
+          "priority": 20,
+          "enabled": true
+        }
+      ]
     },
     "sourceRegister": {
       "path": "./b24_source_register_v1.json",
@@ -102,7 +158,14 @@
       "contentType": "application/json",
       "immutable": true,
       "timeoutMs": 30000,
-      "sources": [{"id":"github-versioned","url":"./b24_source_register_v1.json","priority":20,"enabled":true}]
+      "sources": [
+        {
+          "id": "github-versioned",
+          "url": "./b24_source_register_v1.json",
+          "priority": 20,
+          "enabled": true
+        }
+      ]
     },
     "model": {
       "path": "../../../../assets/aircraft/b24/1.0.0/b-24_liberator.glb",
@@ -112,18 +175,62 @@
       "immutable": true,
       "timeoutMs": 120000,
       "sources": [
-        {"id":"r2-custom-domain","url":"https://__ASSET_DOMAIN__/aircraft/b24/1.0.0/b-24_liberator.glb","priority":10,"enabled":false},
-        {"id":"github-versioned","url":"../../../../assets/aircraft/b24/1.0.0/b-24_liberator.glb","priority":20,"enabled":true}
+        {
+          "id": "r2-custom-domain",
+          "url": "https://__ASSET_DOMAIN__/aircraft/b24/1.0.0/b-24_liberator.glb",
+          "priority": 10,
+          "enabled": false
+        },
+        {
+          "id": "github-versioned",
+          "url": "../../../../assets/aircraft/b24/1.0.0/b-24_liberator.glb",
+          "priority": 20,
+          "enabled": true
+        }
       ],
       "chunks": [
-        {"path":"../../../../assets/aircraft/b24/1.0.0/chunks/b-24_liberator.glb.part000.bin","bytes":4194304,"sha256":"ed2cdfbdf1c38c404f6b0cec774146e4b804626f26cc06b64c380282770b695c","immutable":true},
-        {"path":"../../../../assets/aircraft/b24/1.0.0/chunks/b-24_liberator.glb.part001.bin","bytes":4194304,"sha256":"e5fa81956a780397e1f74e44c39d400ec0bad4728cdba2aa4d83bde0e05bf2b6","immutable":true},
-        {"path":"../../../../assets/aircraft/b24/1.0.0/chunks/b-24_liberator.glb.part002.bin","bytes":4194304,"sha256":"b248545491f614263c6da0dc979283a3ca371b6af33b275684e9532fbcc21cf6","immutable":true},
-        {"path":"../../../../assets/aircraft/b24/1.0.0/chunks/b-24_liberator.glb.part003.bin","bytes":4194304,"sha256":"3e97685aa1f975f03bded04679b969b868bc9fcfe98c76a505b7b8a7839dd3bc","immutable":true},
-        {"path":"../../../../assets/aircraft/b24/1.0.0/chunks/b-24_liberator.glb.part004.bin","bytes":4194304,"sha256":"4e946ae895b1930f45c76e6d82d3f5626da906c9283130cf01f5ec8facb6925b","immutable":true},
-        {"path":"../../../../assets/aircraft/b24/1.0.0/chunks/b-24_liberator.glb.part005.bin","bytes":2114452,"sha256":"17fbbb9db76f5887d0c93195520a8a1bfbe9633a8cdcb59feb74646e11ff410a","immutable":true}
+        {
+          "path": "../../../../assets/aircraft/b24/1.0.0/chunks/b-24_liberator.glb.part000.bin",
+          "bytes": 4194304,
+          "sha256": "ed2cdfbdf1c38c404f6b0cec774146e4b804626f26cc06b64c380282770b695c",
+          "immutable": true
+        },
+        {
+          "path": "../../../../assets/aircraft/b24/1.0.0/chunks/b-24_liberator.glb.part001.bin",
+          "bytes": 4194304,
+          "sha256": "e5fa81956a780397e1f74e44c39d400ec0bad4728cdba2aa4d83bde0e05bf2b6",
+          "immutable": true
+        },
+        {
+          "path": "../../../../assets/aircraft/b24/1.0.0/chunks/b-24_liberator.glb.part002.bin",
+          "bytes": 4194304,
+          "sha256": "b248545491f614263c6da0dc979283a3ca371b6af33b275684e9532fbcc21cf6",
+          "immutable": true
+        },
+        {
+          "path": "../../../../assets/aircraft/b24/1.0.0/chunks/b-24_liberator.glb.part003.bin",
+          "bytes": 4194304,
+          "sha256": "3e97685aa1f975f03bded04679b969b868bc9fcfe98c76a505b7b8a7839dd3bc",
+          "immutable": true
+        },
+        {
+          "path": "../../../../assets/aircraft/b24/1.0.0/chunks/b-24_liberator.glb.part004.bin",
+          "bytes": 4194304,
+          "sha256": "4e946ae895b1930f45c76e6d82d3f5626da906c9283130cf01f5ec8facb6925b",
+          "immutable": true
+        },
+        {
+          "path": "../../../../assets/aircraft/b24/1.0.0/chunks/b-24_liberator.glb.part005.bin",
+          "bytes": 2114452,
+          "sha256": "17fbbb9db76f5887d0c93195520a8a1bfbe9633a8cdcb59feb74646e11ff410a",
+          "immutable": true
+        }
       ],
-      "delivery": {"primary":"whole-object","fallback":"verified-immutable-chunks","chunkCount":6}
+      "delivery": {
+        "primary": "whole-object",
+        "fallback": "verified-immutable-chunks",
+        "chunkCount": 6
+      }
     }
   },
   "signature": {
