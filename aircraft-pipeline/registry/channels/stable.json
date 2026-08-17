@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "channel": "stable",
-  "generatedAt": "2026-08-17T19:48:04Z",
+  "generatedAt": "2026-08-17T19:55:55Z",
   "minimumAppVersion": "0.6.0",
   "catalog": {
     "version": "2026-08-17",
@@ -23,6 +23,10 @@
     "version": "2026.08.18.1",
     "manifest": "../dependencies/2026.08.18.1/dependencies.json"
   },
+  "technicalSources": {
+    "version": "1.0.0",
+    "manifest": "../technical/1.0.0/manifest.json"
+  },
   "activation": {
     "aircraftData": "automatic-stage-safe-reload",
     "skills": "atomic-sync-with-backup",
@@ -34,6 +38,6 @@
     "keyId": "psar-release-2026-08",
     "algorithm": "ECDSA_P256_SHA256",
     "canonicalization": "PSAR-C14N-1",
-    "value": "GAAYm_Y5JBkb16EhBXlJ8NY5Ta1p1Es7vVMHDPnvyKfeVyckBV5blm0FRIGN-MpCqCVHZRS16Imh8wtaSt7GuA"
+    "value": "qNggHp-2Tysmqaby3CxM-3moucUvseD5k6HgU0iiPKC88bDialGajw70IBjBxI4B7JyZvZ_QB9DM6bRXAwr9Jw"
   }
 }
