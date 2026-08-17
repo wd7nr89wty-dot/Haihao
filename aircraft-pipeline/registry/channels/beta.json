@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "channel": "beta",
+  "generatedAt": "2026-08-17T20:06:28Z",
+  "minimumAppVersion": "0.6.0",
+  "catalog": {
+    "version": "2026-08-17",
+    "manifest": "../catalog/aircraft.json"
+  },
+  "aircraft": {
+    "b24_liberator": {
+      "version": "1.2.0",
+      "manifest": "../aircraft/b24/1.2.0/manifest.json"
+    }
+  },
+  "skills": {
+    "aircraft-production": {
+      "version": "1.2.0",
+      "manifest": "../skills/aircraft-production/1.2.0/manifest.json"
+    }
+  },
+  "dependencies": {
+    "version": "2026.08.18.1",
+    "manifest": "../dependencies/2026.08.18.1/dependencies.json"
+  },
+  "technicalSources": {
+    "version": "1.0.0",
+    "manifest": "../technical/1.0.0/manifest.json"
+  },
+  "activation": {
+    "aircraftData": "opt-in",
+    "skills": "atomic-sync-with-backup",
+    "dependencies": "ci-release-only",
+    "application": "signed-release-notification"
+  },
+  "signature": {
+    "schemaVersion": 1,
+    "keyId": "psar-release-2026-08",
+    "algorithm": "ECDSA_P256_SHA256",
+    "canonicalization": "PSAR-C14N-1",
+    "value": "eIUNV5edOQpXWVIzmdfAkGN8Z_mYyHcfNArZnftGOtRdoYYd4YV_9cDwdOFP3FsMjumuVvQ0lwJ0dcMwUqPApw"
+  }
+}
