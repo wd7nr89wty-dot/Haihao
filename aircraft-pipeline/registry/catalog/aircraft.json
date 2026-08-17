@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "catalogId": "psar-world-war-ii-aircraft",
-  "generatedAt": "2026-08-17T19:48:04Z",
+  "generatedAt": "2026-08-17T19:55:55Z",
   "defaultAircraftId": "b24_liberator",
   "aircraft": [
     {
@@ -84,6 +84,6 @@
     "keyId": "psar-release-2026-08",
     "algorithm": "ECDSA_P256_SHA256",
     "canonicalization": "PSAR-C14N-1",
-    "value": "euZGHxrsTQ3pcDyJQxlYRoQA79Mqdx8dC9bV79yv_NvrntUILzHgczCwW246Ecn0kZFeeKDZBWVzvfCfIvVlhQ"
+    "value": "5OG0_hQLuAxhnjpGrQyHITneSAkeY8rW9aWhANcek839I215egQcg2nC3XWWo1BjB9-nN8uwwzf6BmdXBmgtSg"
   }
 }
