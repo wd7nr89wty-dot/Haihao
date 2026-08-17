@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 2,
+  "mapId": "psar-universal-aircraft-system-map-v1",
+  "aircraftId": "b24_liberator",
+  "version": "1.2.0",
+  "rootSystems": [
+    {
+      "id": "airframe",
+      "required": true,
+      "revealLevels": [
+        1,
+        4
+      ],
+      "children": [
+        "fuselage",
+        "wing",
+        "tail"
+      ]
+    },
+    {
+      "id": "flightControls",
+      "required": true,
+      "revealLevels": [
+        2,
+        4
+      ],
+      "children": [
+        "aileron",
+        "elevator",
+        "rudder",
+        "flap",
+        "trim"
+      ]
+    },
+    {
+      "id": "propulsion",
+      "required": true,
+      "revealLevels": [
+        2,
+        4
+      ],
+      "instances": 4,
+      "children": [
+        "engine",
+        "propeller",
+        "cowling",
+        "exhaust",
+        "heatVolume"
+      ]
+    },
+    {
+      "id": "landingGear",
+      "required": true,
+      "revealLevels": [
+        2,
+        4
+      ],
+      "children": [
+        "noseGear",
+        "leftMainGear",
+        "rightMainGear",
+        "doors",
+        "wheels",
+        "brakes"
+      ]
+    },
+    {
+      "id": "payload",
+      "required": false,
+      "revealLevels": [
+        2,
+        4
+      ],
+      "children": [
+        "bombBay",
+        "racks",
+        "doors"
+      ]
+    },
+    {
+      "id": "defensiveSystems",
+      "required": false,
+      "revealLevels": [
+        2,
+        4
+      ],
+      "children": [
+        "nosePosition",
+        "dorsalPosition",
+        "ventralPosition",
+        "waistPositions",
+        "tailPosition"
+      ]
+    },
+    {
+      "id": "electricalAndLights",
+      "required": true,
+      "revealLevels": [
+        3,
+        4
+      ],
+      "children": [
+        "landingLights",
+        "navigationLights",
+        "instruments"
+      ]
+    },
+    {
+      "id": "fuel",
+      "required": true,
+      "revealLevels": [
+        4
+      ],
+      "children": [
+        "tanks",
+        "feeds",
+        "selectors"
+      ]
+    },
+    {
+      "id": "hydraulic",
+      "required": true,
+      "revealLevels": [
+        4
+      ],
+      "children": [
+        "pumps",
+        "lines",
+        "actuators"
+      ]
+    }
+  ],
+  "jointTypes": [
+    "rigid",
+    "datum",
+    "hinge",
+    "rotor",
+    "rotor_feather",
+    "slider_hinge",
+    "suspension_slider",
+    "steering_hinge",
+    "emitter",
+    "volume",
+    "system"
+  ],
+  "progressiveReveal": {
+    "metric": "projectedWingspanPixels",
+    "levels": 5,
+    "createAllNodesAtLoad": true,
+    "selectionMayPromoteLocalBranch": true,
+    "hysteresisRequired": true,
+    "meshLodSwitching": false
+  },
+  "runtimeContract": {
+    "aircraftRootControls": [
+      "yaw",
+      "pitch",
+      "roll"
+    ],
+    "controlSurfacesUseJointLimits": true,
+    "engineCountComesFromProfile": true,
+    "effectsUseSemanticAnchors": true,
+    "productionStagesAreDataDriven": true,
+    "modelSpecificBehaviorUsesRuntimePlugin": true,
+    "semanticWorkUsesScreenSpaceBudget": true,
+    "meshGeometryRemainsSingleIdentity": true
+  },
+  "executionBudget": {
+    "policy": "single-mesh-progressive-semantic-work",
+    "focusBoostLevels": 1,
+    "minimumFocusedRateHz": 24,
+    "criticalSystemsAlwaysPerFrame": [
+      "flightIntegration",
+      "camera",
+      "collisionAuthority"
+    ],
+    "levels": [
+      {
+        "id": "root-only",
+        "label": "整机根级",
+        "rates": {
+          "mechanisms": 8,
+          "engines": 8,
+          "effects": 4,
+          "rig": 6,
+          "telemetry": 2,
+          "inspection": 0
+        }
+      },
+      {
+        "id": "primary-structure",
+        "label": "主结构级",
+        "rates": {
+          "mechanisms": 15,
+          "engines": 12,
+          "effects": 8,
+          "rig": 12,
+          "telemetry": 4,
+          "inspection": 0
+        }
+      },
+      {
+        "id": "functional-systems",
+        "label": "功能系统级",
+        "rates": {
+          "mechanisms": 30,
+          "engines": 24,
+          "effects": 15,
+          "rig": 24,
+          "telemetry": 8,
+          "inspection": 1
+        }
+      },
+      {
+        "id": "mechanism-detail",
+        "label": "机构细节级",
+        "rates": {
+          "mechanisms": 60,
+          "engines": 45,
+          "effects": 30,
+          "rig": 45,
+          "telemetry": 10,
+          "inspection": 4
+        }
+      },
+      {
+        "id": "production-anatomy",
+        "label": "生产解剖级",
+        "rates": {
+          "mechanisms": 60,
+          "engines": 60,
+          "effects": 60,
+          "rig": 60,
+          "telemetry": 12,
+          "inspection": 12
+        }
+      }
+    ]
+  }
+}
