@@ -2,7 +2,9 @@ name: Deploy unified production site
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - agent/dem-cloud-console-v0-4
     paths:
       - 'dem-pipeline/web/**'
       - 'architecture-pipeline/web/**'
