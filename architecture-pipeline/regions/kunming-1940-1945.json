@@ -1,0 +1,92 @@
+{
+  "id": "cn-yunnan-kunming-1940-1945-v0.1",
+  "region": {"country": "China", "province": "Yunnan", "city": "Kunming"},
+  "period": {"from": 1940, "to": 1945},
+  "coordinateSystem": "meters-y-up",
+  "status": "researching",
+  "generationDefaults": {
+    "seededVariation": true,
+    "historicalConfidenceFloor": 0.55,
+    "mergeStaticShell": true,
+    "instanceRepeatedParts": true,
+    "generateHiddenInterior": false
+  },
+  "archetypes": [
+    {
+      "id": "yi-ke-yin-courtyard-house",
+      "label": "Yi Ke Yin courtyard dwelling",
+      "footprint": {
+        "family": "compact-courtyard",
+        "shape": "near-square",
+        "components": ["principal-room", "left-wing", "right-wing", "opposite-building", "courtyard", "gate"],
+        "courtyardRatio": {"min": 0.16, "max": 0.30},
+        "streetEdge": "mostly-continuous"
+      },
+      "storeys": {"min": 1, "max": 2},
+      "roof": {
+        "family": "pitched-tile",
+        "tileMaterial": "fired-clay-tile-dark-weathered",
+        "pitchDegrees": {"min": 22, "max": 34},
+        "eaveDepthM": {"min": 0.45, "max": 0.90},
+        "ridgeVariation": 0.08
+      },
+      "wall": {
+        "primary": "earthen-wall",
+        "finishVariants": ["earth-exposed", "lime-washed-aged"],
+        "thicknessM": {"min": 0.30, "max": 0.55}
+      },
+      "structure": {
+        "primary": "timber-frame-with-infill",
+        "semanticParts": ["column", "beam", "purlin", "lintel", "wall-infill", "roof-plane", "ridge", "eave"]
+      },
+      "openings": {
+        "streetFacadeDensity": "low-to-medium",
+        "courtyardFacadeDensity": "medium-to-high",
+        "doorFamilies": ["timber-double-door", "timber-single-door"],
+        "windowFamilies": ["timber-lattice-simple", "timber-shuttered"]
+      },
+      "generator": {
+        "mode": "footprint-constrained-courtyard",
+        "bayWidthM": {"min": 2.6, "max": 3.6},
+        "floorHeightM": {"min": 2.7, "max": 3.4},
+        "steps": ["normalize-footprint", "reserve-courtyard", "fit-room-wings", "place-structural-bays", "extrude-walls", "solve-roof", "place-openings", "instance-details", "apply-weathering"]
+      },
+      "evidence": {"status": "documented", "confidence": 0.82, "sourceIds": ["cambridge-chinese-vernacular-dwellings"]}
+    }
+  ],
+  "materials": {
+    "fired-clay-tile-dark-weathered": {"baseColor": "#4b4a46", "roughness": 0.88, "variation": 0.18},
+    "earthen-wall": {"baseColor": "#a89473", "roughness": 0.96, "variation": 0.14},
+    "lime-washed-aged": {"baseColor": "#c8c2ae", "roughness": 0.92, "variation": 0.12},
+    "aged-timber": {"baseColor": "#5a4635", "roughness": 0.86, "variation": 0.16}
+  },
+  "variationPolicy": {
+    "geometrySeed": "building-id",
+    "allowed": ["roof-pitch", "eave-depth", "wall-finish", "opening-spacing", "timber-tone", "weathering"],
+    "forbiddenWithoutEvidence": ["ornate-bracket-sets", "bright-glazed-roof-tiles", "monumental-gates", "modern-balconies"]
+  },
+  "sources": [
+    {
+      "id": "cambridge-chinese-vernacular-dwellings",
+      "title": "Chinese Vernacular Dwellings",
+      "publisher": "Cambridge University Press",
+      "url": "https://assets.cambridge.org/97805211/86674/excerpt/9780521186674_excerpt.pdf",
+      "notes": "Excerpt identifies Kunming Yi Ke Yin as a courtyard dwelling and describes principal room, wing room, opposite building, tile roof and earthen walls."
+    },
+    {
+      "id": "unesco-chinese-timber-craft",
+      "title": "Chinese Traditional Architectural Craftsmanship for Timber-framed Structures",
+      "publisher": "UNESCO",
+      "url": "https://www.unesco.org/archives/multimedia/document-336",
+      "notes": "General structural vocabulary for traditional Chinese timber frames: columns, beams, purlins, lintels, bracket sets, tile roofing and stonework. Used only for generic structural semantics, not local decorative claims."
+    }
+  ],
+  "researchBacklog": [
+    "1940-1945 Kunming aerial-photo footprint taxonomy",
+    "period street photographs for facade opening ratios",
+    "local tile profile and ridge/end-tile geometry",
+    "wartime shopfront and mixed residential-commercial variants",
+    "wall finish frequency by district",
+    "damage, repair and weathering signatures during wartime"
+  ]
+}
