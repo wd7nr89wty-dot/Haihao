@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 3,
+  "registryId": "psar-aircraft-production",
+  "generatedAt": "2026-08-17T19:48:04Z",
+  "currentAppVersion": "0.6.0",
+  "catalog": {
+    "manifest": "./catalog/aircraft.json"
+  },
+  "channels": {
+    "stable": {
+      "version": "2026-08-17",
+      "manifest": "./channels/stable.json"
+    },
+    "beta": {
+      "version": "2026-08-17",
+      "manifest": "./channels/beta.json"
+    },
+    "dev": {
+      "version": "2026-08-17",
+      "manifest": "./channels/dev.json"
+    }
+  },
+  "security": {
+    "hashAlgorithm": "SHA-256",
+    "signatureAlgorithm": "ECDSA_P256_SHA256",
+    "canonicalization": "PSAR-C14N-1",
+    "trustedKeyId": "psar-release-2026-08",
+    "immutableVersionPaths": true,
+    "manifestAttestation": "GitHub Actions release workflow",
+    "secureMetadataProfile": "PSAR-SM-1.0",
+    "rollbackProtection": true,
+    "freezeProtection": true,
+    "consistentSnapshot": true
+  },
+  "signature": {
+    "schemaVersion": 1,
+    "keyId": "psar-release-2026-08",
+    "algorithm": "ECDSA_P256_SHA256",
+    "canonicalization": "PSAR-C14N-1",
+    "value": "-u8rFdDLRSCCQ565O5lW45v6H-fBd4xIkzaHdk9VcUsN3TU-p-tRO8RCOB_t0Pa3ItWUF45bDD9XauO3SBUu6Q"
+  }
+}
