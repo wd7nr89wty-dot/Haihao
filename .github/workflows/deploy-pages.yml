@@ -1,0 +1,82 @@
+name: Deploy unified production site
+
+on:
+  push:
+    branches:
+      - main
+      - agent/dem-cloud-console-v0-4
+    paths:
+      - 'dem-pipeline/web/**'
+      - 'architecture-pipeline/web/**'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+
+      - name: Assemble and verify public site
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site
+
+          cat dem-pipeline/web/public-console.part* | base64 --decode > /tmp/dem-console.html.gz
+          gzip --test /tmp/dem-console.html.gz
+          gzip --decompress --stdout /tmp/dem-console.html.gz > _site/index.html
+          test -s _site/index.html
+
+          cp dem-pipeline/web/project-config.json _site/project-config.json
+
+          mkdir -p _site/dem
+          cp _site/index.html _site/dem/index.html
+          cp _site/project-config.json _site/dem/project-config.json
+
+          mkdir -p _site/architecture
+          cp -a architecture-pipeline/web/. _site/architecture/
+
+          mkdir -p _site/guilin/gaea-proof _site/embed
+
+          printf '%s\n' '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>桂林地形工程</title><script>const q=new URLSearchParams(location.search);q.set("scope","core");location.replace(`../?${q}`);</script>' > _site/guilin/index.html
+
+          printf '%s\n' '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GAEA Proof</title><script>const q=new URLSearchParams(location.search);q.set("scope","core");q.set("layer","delta");q.set("epoch","1944");location.replace(`../../?${q}`);</script>' > _site/guilin/gaea-proof/index.html
+
+          printf '%s\n' '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>桂林地形嵌入预览</title><script>const q=new URLSearchParams(location.search);q.set("embed","1");location.replace(`../?${q}`);</script>' > _site/embed/index.html
+
+          printf '%s\n' '{"status":"ok","release":"0.4.0-public-preview","project":"guilin-yangtang","host":"github-pages"}' > _site/health.json
+          printf '%s\n' 'User-agent: *' 'Allow: /' > _site/robots.txt
+          touch _site/.nojekyll
+
+          grep -q '0.4.0-public-preview' _site/project-config.json
+          grep -q '桂林秧塘机场地形工程' _site/index.html
+          test -s _site/architecture/index.html
+          test -s _site/architecture/app.js
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
