@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "profileId": "b24-operational-effects-v1",
+  "aircraftId": "b24_liberator",
+  "version": "1.0.0",
+  "engineCount": 4,
+  "coordinateContract": {
+    "forward": "positive-z",
+    "up": "positive-y",
+    "right": "positive-x",
+    "units": "meters"
+  },
+  "effectSystems": {
+    "engineExhaust": {
+      "profileCatalog": "smokeProfiles",
+      "emittersPerEngine": [
+        "exhaustPrimary",
+        "turboExhaust"
+      ],
+      "independentPerEngine": true,
+      "normalFlightRule": "heat-haze-dominant",
+      "faultOverridePriority": [
+        "nacelleFire",
+        "oilBurningFault",
+        "richMixtureFault"
+      ]
+    },
+    "heatHaze": {
+      "mode": "webgpu-distortion-field",
+      "fallback": "screen-space-sprite-distortion",
+      "anchors": [
+        "engine{n}ExhaustPrimary"
+      ],
+      "intensityInputs": [
+        "rpm",
+        "manifoldPressure",
+        "airSpeed",
+        "ambientTemperature"
+      ]
+    },
+    "propellerSlipstream": {
+      "mode": "analytic-disc-field",
+      "anchors": [
+        "engine{n}PropellerRotor"
+      ],
+      "inputs": [
+        "rpm",
+        "bladePitch",
+        "airSpeed"
+      ],
+      "affects": [
+        "smoke",
+        "dust",
+        "rain",
+        "nearby-fabric"
+      ]
+    },
+    "groundDust": {
+      "mode": "shared-particle-pool",
+      "enabledWhen": [
+        "weightOnWheels",
+        "groundSpeed>2",
+        "surface=dirt-or-dust"
+      ],
+      "disabledOn": [
+        "sealed-concrete",
+        "wet-surface"
+      ],
+      "anchors": [
+        "mainGearLeft",
+        "mainGearRight",
+        "noseGear"
+      ]
+    },
+    "tireContact": {
+      "touchdownPuff": true,
+      "skidSmoke": true,
+      "inputs": [
+        "verticalSpeed",
+        "wheelSlip",
+        "brakeInput",
+        "surfaceType"
+      ],
+      "healthyTaxiSmoke": false
+    },
+    "engineFire": {
+      "anchors": [
+        "engine{n}FireEmitter"
+      ],
+      "layers": [
+        "flame-core",
+        "dense-smoke",
+        "embers",
+        "heat-haze"
+      ],
+      "shutdownResponse": "decay-after-fuel-cutoff"
+    }
+  },
+  "lifecycleBindings": {
+    "COLD_PARKED": {
+      "exhaust": "off",
+      "heatHaze": 0,
+      "propWash": 0
+    },
+    "ENGINE_START_SEQUENCE": {
+      "exhaust": "startupOilBurnoff",
+      "heatHaze": 0.25,
+      "propWash": "per-engine-rpm"
+    },
+    "WARMUP": {
+      "exhaust": "coldIdle",
+      "heatHaze": 0.45,
+      "propWash": "per-engine-rpm"
+    },
+    "TAXI_OUT": {
+      "exhaust": "warmTaxi",
+      "heatHaze": 0.55,
+      "propWash": "per-engine-rpm",
+      "groundDust": "surface-dependent"
+    },
+    "RUN_UP": {
+      "exhaust": "runUp",
+      "heatHaze": 0.9,
+      "propWash": "high"
+    },
+    "TAKEOFF_ROLL": {
+      "exhaust": "takeoffPower",
+      "heatHaze": 1,
+      "propWash": "maximum",
+      "groundDust": "surface-dependent"
+    },
+    "CLIMB": {
+      "exhaust": "cruiseHeatOnly",
+      "heatHaze": 0.85,
+      "propWash": "high"
+    },
+    "CRUISE": {
+      "exhaust": "cruiseHeatOnly",
+      "heatHaze": 0.72,
+      "propWash": "cruise"
+    },
+    "APPROACH": {
+      "exhaust": "cruiseHeatOnly",
+      "heatHaze": 0.42,
+      "propWash": "approach"
+    },
+    "TOUCHDOWN": {
+      "exhaust": "warmTaxi",
+      "heatHaze": 0.35,
+      "tireContact": "touchdown"
+    },
+    "SHUTDOWN": {
+      "exhaust": "shutdownResidual",
+      "heatHaze": "decay",
+      "propWash": "decay"
+    }
+  },
+  "pathTracingProxy": {
+    "realtimeParticlesExcluded": true,
+    "volumeProxyPerEngine": true,
+    "fireEmissiveProxy": true,
+    "rawConvergenceRequired": true,
+    "denoiserAllowed": false
+  },
+  "calibration": {
+    "status": "visual-simulation-tuning",
+    "sourceIds": [
+      "smithsonian-r1830",
+      "usaf-b24d-fact-sheet"
+    ],
+    "openUncertaintyIds": [
+      "smoke-calibration"
+    ]
+  }
+}
