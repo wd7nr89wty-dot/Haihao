@@ -1,0 +1,23 @@
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const view=document.querySelector('#view');
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0xb8b5aa); scene.fog=new THREE.Fog(0xb8b5aa,55,120);
+const camera=new THREE.PerspectiveCamera(42,1,.1,250); camera.position.set(28,23,30);
+const renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap; renderer.outputColorSpace=THREE.SRGBColorSpace; view.appendChild(renderer.domElement);
+const controls=new OrbitControls(camera,renderer.domElement); controls.target.set(0,3,0); controls.enableDamping=true; controls.maxPolarAngle=Math.PI*.48;
+scene.add(new THREE.HemisphereLight(0xe8e2d4,0x67645b,2.2)); const sun=new THREE.DirectionalLight(0xfff2d6,3); sun.position.set(-20,30,18); sun.castShadow=true; sun.shadow.mapSize.set(2048,2048); scene.add(sun);
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(150,150),new THREE.MeshStandardMaterial({color:0x8d897c,roughness:1})); ground.rotation.x=-Math.PI/2; ground.receiveShadow=true; scene.add(ground);
+let building=new THREE.Group(); scene.add(building); let city='kunming';
+const palettes={kunming:{wall:0xa89473,roof:0x4b4a46,timber:0x594433,court:0x8f806a},wenzhou:{wall:0xb8b0a0,roof:0x505154,timber:0x4c382c,court:0x817b70},guilin:{wall:0xb5aa91,roof:0x57544d,timber:0x584431,court:0x817763}};
+function mat(c,r=.9){return new THREE.MeshStandardMaterial({color:c,roughness:r});}
+function box(name,x,y,z,w,h,d,m){const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);o.name=name;o.position.set(x,y,z);o.castShadow=o.receiveShadow=true;building.add(o);return o}
+function gableRoof(name,x,z,w,d,y,pitch,color){const rise=Math.tan(THREE.MathUtils.degToRad(pitch))*d/2;const s=Math.sqrt((d/2)**2+rise**2);const geo=new THREE.BoxGeometry(w+.8,.16,s+.5);const m=mat(color,.94);for(const side of [-1,1]){const r=new THREE.Mesh(geo,m);r.name=name;r.position.set(x,y+rise/2,z+side*d/4);r.rotation.x=side*THREE.MathUtils.degToRad(90-pitch);r.castShadow=true;building.add(r)}}
+function makeBuilding(){scene.remove(building);building=new THREE.Group();scene.add(building);const W=+width.value,D=+depth.value,S=+storeys.value,p=palettes[city],fh=city==='kunming'?3:3.15,H=fh*S,cw=W*.34,cd=D*.32,wing=(W-cw)/2,front=(D-cd)/2;const wall=mat(p.wall),timber=mat(p.timber,.82);
+box('courtyard',0,.05,0,cw,.1,cd,mat(p.court));
+box('principal-room',0,H/2,-(cd/2+front/2),W,H,front,wall); box('opposite-building',0,H/2,cd/2+front/2,W,H,front,wall); box('left-wing',-(cw/2+wing/2),H/2,0,wing,H,cd,wall); box('right-wing',cw/2+wing/2,H/2,0,wing,H,cd,wall);
+const pitch=city==='wenzhou'?30:city==='guilin'?33:27;gableRoof('principal-roof',0,-(cd/2+front/2),W,front,H,pitch,p.roof);gableRoof('opposite-roof',0,cd/2+front/2,W,front,H,pitch,p.roof);gableRoof('left-roof',-(cw/2+wing/2),0,cd,wing,H,pitch,p.roof);gableRoof('right-roof',cw/2+wing/2,0,cd,wing,H,pitch,p.roof);
+const colGeo=new THREE.CylinderGeometry(.11,.13,H,8),colMat=timber;let count=0;for(const z of [-cd/2,cd/2])for(let x=-cw/2;x<=cw/2+.01;x+=Math.max(2.4,cw/3)){const c=new THREE.Mesh(colGeo,colMat);c.position.set(x,H/2,z);c.castShadow=true;building.add(c);count++}for(const x of [-cw/2,cw/2])for(let z=-cd/3;z<=cd/3+.01;z+=Math.max(2.4,cd/3)){const c=new THREE.Mesh(colGeo,colMat);c.position.set(x,H/2,z);c.castShadow=true;building.add(c);count++}
+const door=mat(0x46372c,.8);box('gate',0,1.15,D/2+.03,1.8,2.3,.12,door);document.querySelector('#hud').innerHTML=`<b>${city.toUpperCase()} · 1940–1945</b><br>${W} × ${D} m · ${S} storey${S>1?'s':''}<br>courtyard ${(cw*cd).toFixed(1)} m² · ${count} visible columns<br>detail tier: semantic medium`;}
+for(const id of ['width','depth','storeys'])document.querySelector('#'+id).addEventListener('input',()=>{document.querySelector('#'+id[0]+'v').textContent=document.querySelector('#'+id).value+(id==='storeys'?'':'m');makeBuilding()});document.querySelector('#regen').onclick=makeBuilding;document.querySelectorAll('.kit').forEach(k=>k.onclick=()=>{document.querySelectorAll('.kit').forEach(x=>x.classList.remove('active'));k.classList.add('active');city=k.dataset.city;makeBuilding()});
+function resize(){const w=view.clientWidth,h=view.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false)}addEventListener('resize',resize);resize();makeBuilding();renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera)});
