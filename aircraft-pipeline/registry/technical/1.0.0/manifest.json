@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "packageType": "technical-source-register",
+  "version": "1.0.0",
+  "generatedAt": "2026-08-17T20:06:28Z",
+  "compatibility": {
+    "minimumAppVersion": "0.6.0"
+  },
+  "assets": {
+    "sourceRegister": {
+      "path": "./source_register.json",
+      "bytes": 3338,
+      "sha256": "34bcf275a3b83ffe255fea612d264c2b87ab37bf8f848d31aae304bb098696ef",
+      "contentType": "application/json",
+      "immutable": true,
+      "timeoutMs": 30000,
+      "sources": [
+        {
+          "id": "github-versioned",
+          "url": "./source_register.json",
+          "priority": 20,
+          "enabled": true
+        }
+      ]
+    }
+  },
+  "signature": {
+    "schemaVersion": 1,
+    "keyId": "psar-release-2026-08",
+    "algorithm": "ECDSA_P256_SHA256",
+    "canonicalization": "PSAR-C14N-1",
+    "value": "Z0mCuiRvN-GeTZ5t32SSS_RzKezwYmzap0NcN7jzru0xV7NpyDZqXgcmwDCq2ONvFcjyJAKCqkSYHYGpVBsU2g"
+  }
+}
