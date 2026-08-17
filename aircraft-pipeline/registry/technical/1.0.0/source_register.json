@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "packageType": "technical-source-register",
+  "version": "1.0.0",
+  "checkedAt": "2026-08-18T00:00:00Z",
+  "scope": [
+    "secure update architecture",
+    "release provenance",
+    "dependency reproducibility",
+    "runtime dependency pinning"
+  ],
+  "sources": [
+    {
+      "id": "tuf-specification",
+      "organization": "The Update Framework",
+      "title": "The Update Framework Specification",
+      "url": "https://theupdateframework.github.io/specification/latest/",
+      "sourceType": "security-specification",
+      "usedFor": [
+        "root, timestamp, snapshot, and targets role separation",
+        "metadata expiry",
+        "rollback protection",
+        "freeze protection",
+        "consistent snapshots",
+        "mix-and-match resistance"
+      ],
+      "implementationStatus": "inspired-custom-profile",
+      "note": "PSAR-SM-1.0 adopts a constrained subset of these security ideas and does not claim full TUF compliance."
+    },
+    {
+      "id": "github-artifact-attestations",
+      "organization": "GitHub",
+      "title": "Use artifact attestations",
+      "url": "https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations",
+      "sourceType": "official-platform-documentation",
+      "usedFor": [
+        "release archive provenance",
+        "SBOM-linked build attestation",
+        "GitHub Actions permissions"
+      ],
+      "implementationStatus": "release-workflow-conditional"
+    },
+    {
+      "id": "npm-package-lock",
+      "organization": "npm",
+      "title": "package-lock.json",
+      "url": "https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json",
+      "sourceType": "official-package-manager-documentation",
+      "usedFor": [
+        "exact dependency tree",
+        "reproducible npm ci installation",
+        "integrity metadata"
+      ],
+      "implementationStatus": "implemented"
+    },
+    {
+      "id": "npm-three-01851",
+      "organization": "npm",
+      "title": "three 0.185.1",
+      "url": "https://www.npmjs.com/package/three/v/0.185.1",
+      "sourceType": "official-package-registry-record",
+      "usedFor": [
+        "Three.js runtime version pin",
+        "package integrity lock"
+      ],
+      "implementationStatus": "implemented",
+      "pinnedVersion": "0.185.1"
+    },
+    {
+      "id": "img2threejs-upstream",
+      "organization": "img2threejs",
+      "title": "img2threejs",
+      "url": "https://github.com/img2threejs/img2threejs",
+      "sourceType": "open-source-skill-upstream",
+      "usedFor": [
+        "semantic decomposition",
+        "quality-gated reconstruction",
+        "GLB-mediated comparison workflow"
+      ],
+      "implementationStatus": "pinned-reviewed-upstream",
+      "pinnedCommit": "d6673386f89673a58736f8d398dd16ece67874f5"
+    }
+  ],
+  "securityLimitations": [
+    {
+      "id": "single-key-starter",
+      "status": "known-limitation",
+      "description": "The current prototype signs all roles with one P-256 release key. Public production should use an offline threshold root and separate online role keys."
+    },
+    {
+      "id": "custom-update-profile",
+      "status": "known-limitation",
+      "description": "PSAR-SM-1.0 is a custom TUF-inspired profile and has not been certified as a complete TUF implementation."
+    }
+  ]
+}
