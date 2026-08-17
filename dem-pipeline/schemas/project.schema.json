@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://haihao.example/schemas/dem-project.schema.json",
+  "title": "DEM Production Project",
+  "type": "object",
+  "required": ["id", "name", "status", "area", "core", "dem", "pipeline", "publishing"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "status": { "enum": ["research", "source-ready", "gaea-ready", "building", "published", "archived"] },
+    "area": {
+      "type": "object",
+      "required": ["targetKm2"],
+      "properties": {
+        "targetKm2": { "type": "number" },
+        "bbox": { "type": ["array", "null"], "minItems": 4, "maxItems": 4, "items": { "type": "number" } }
+      }
+    },
+    "core": {
+      "type": "object",
+      "required": ["targetKm2"],
+      "properties": {
+        "targetKm2": { "type": "number", "const": 36 },
+        "center": { "type": ["array", "null"], "minItems": 2, "maxItems": 2, "items": { "type": "number" } },
+        "nativeDemPreferredMeters": { "type": "number", "exclusiveMaximum": 13 }
+      }
+    },
+    "dem": {
+      "type": "object",
+      "required": ["regionalTargetMeters", "licensePolicy"],
+      "properties": {
+        "regionalTargetMeters": { "type": "number", "default": 13 },
+        "licensePolicy": { "const": "free-and-usable" },
+        "regionalSource": { "type": ["string", "null"] },
+        "coreSource": { "type": ["string", "null"] }
+      }
+    },
+    "pipeline": {
+      "type": "object",
+      "required": ["gaeaExecution", "workerCachePolicy"],
+      "properties": {
+        "gaeaExecution": { "const": "private-windows-worker" },
+        "workerCachePolicy": { "const": "temporary-delete-after-upload" },
+        "terrainConstraints": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "publishing": {
+      "type": "object",
+      "required": ["viewer"],
+      "properties": {
+        "viewer": { "const": "threejs-webgpu" },
+        "productionUrl": { "type": ["string", "null"] },
+        "proofUrl": { "type": ["string", "null"] }
+      }
+    }
+  }
+}
