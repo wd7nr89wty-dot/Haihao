@@ -1,0 +1,10 @@
+{
+  "workerId": "gaea-worker-01",
+  "platform": "windows",
+  "maxConcurrentJobs": 1,
+  "pollSeconds": 30,
+  "workspaceRoot": "%TEMP%/haihao-dem",
+  "gaea": {"executable": "C:/Program Files/QuadSpinner/Gaea/Gaea.exe", "version": null},
+  "cloud": {"provider": "TBD", "projectRoot": "projects/", "credentials": "environment"},
+  "cleanup": {"onSuccess": true, "onFailure": true, "retainLogsOnFailure": true}
+}
