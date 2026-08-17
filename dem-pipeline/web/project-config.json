@@ -1,0 +1,47 @@
+{
+  "id": "guilin-yangtang",
+  "name": "桂林秧塘机场地形工程",
+  "subtitle": "5000 平方公里 13 米全域与 36 平方公里核心区",
+  "version": "0.4.0-public-preview",
+  "anchor": {
+    "name": "秧塘机场旧址与飞虎队纪念公园",
+    "longitude": 110.156375,
+    "latitude": 25.216758,
+    "crs": "EPSG:32649",
+    "confidence": "provisional"
+  },
+  "fullAoi": {
+    "areaKm2": 5000,
+    "sideKm": 70.710678,
+    "gridMeters": 13,
+    "estimatedPixels": [5440, 5440],
+    "bbox": [109.80230650918, 24.895113279522, 110.508612238808, 25.53761343736]
+  },
+  "coreAoi": {
+    "areaKm2": 36,
+    "sideKm": 6,
+    "truthGridMeters": 13,
+    "gaeaCanvas": [2048, 2048],
+    "workingGridMeters": 2.9296875,
+    "fallbackActive": true,
+    "bbox": [110.126402819535, 25.189495679849, 110.186333995427, 25.24401463745]
+  },
+  "terrainPreview": {
+    "provider": "AWS Open Data Terrain Tiles",
+    "format": "Terrarium",
+    "zoom": 13,
+    "usage": "browser-preview-only",
+    "productionDem": "registered-project-13m-dem"
+  },
+  "cloud": {
+    "sourceOfTruth": "object-storage",
+    "metadata": "database",
+    "buildQueue": "remote-control-api",
+    "gaeaWorker": "private-windows-node",
+    "localPersistence": "ephemeral-cache-only",
+    "publicPreview": "github-pages",
+    "publicSiteStatus": "online",
+    "controlApiStatus": "pending",
+    "gaeaWorkerStatus": "pending"
+  }
+}
