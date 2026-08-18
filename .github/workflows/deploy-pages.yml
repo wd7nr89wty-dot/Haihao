@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - agent/dem-cloud-console-v0-4
+      - agent/dem-12-5m-correction
     paths:
       - 'dem-pipeline/web/**'
       - 'architecture-pipeline/web/**'
@@ -39,6 +40,32 @@ jobs:
           gzip --decompress --stdout /tmp/dem-console.html.gz > _site/index.html
           test -s _site/index.html
 
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('_site/index.html')
+          text = path.read_text(encoding='utf-8')
+          replacements = {
+              '桂林 DEM 云端工程台 v0.4': '桂林 DEM 云端工程台 v0.4.1',
+              'github-pages-public-v0.4.0': 'github-pages-public-v0.4.1',
+              '5000 平方公里全域统一采用 13 米 DEM。秧塘机场中心 36 平方公里核心区先检查高分数据，当前启用 13 米回退与受约束细化。': '5000 平方公里全域统一采用 12.5 米 DEM。秧塘机场中心 36 平方公里核心区继续检查更高精度数据，当前使用 12.5 米 DEM 进行受约束细化。',
+              '正式 GAEA 构建读取云端登记的项目 13 米 DEM。': '正式 GAEA 构建读取云端登记的项目 12.5 米 DEM。',
+              '13m truth<br>constrained detail': '12.5m truth<br>constrained detail',
+              '6 km × 6 km · 13 米真值 · 2.93 米 GAEA 工作画布': '6 km × 6 km · 12.5 米真值 · 2.93 米 GAEA 工作画布',
+              'core_13m_fallback': 'core_12_5m_fallback',
+              'release: 0.4.0-public-preview': 'release: 0.4.1-public-preview',
+              "revision: '0.4.0-public-preview'": "revision: '0.4.1-public-preview'",
+              'full_5000km2_13m': 'full_5000km2_12_5m',
+              '70.71 km × 70.71 km · 13 米统一输出网格': '70.71 km × 70.71 km · 12.5 米统一输出网格',
+              "'registered-project-13m-dem': '项目 13 米 DEM'": "'registered-project-12-5m-dem': '项目 12.5 米 DEM'",
+          }
+          for source, target in replacements.items():
+              text = text.replace(source, target)
+          if '13 米' in text or 'core_13m' in text or 'full_5000km2_13m' in text:
+              raise SystemExit('legacy 13 m labels remain in public console')
+          path.write_text(text, encoding='utf-8')
+          PY
+
           cp dem-pipeline/web/project-config.json _site/project-config.json
 
           mkdir -p _site/dem
@@ -56,12 +83,13 @@ jobs:
 
           printf '%s\n' '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>桂林地形嵌入预览</title><script>const q=new URLSearchParams(location.search);q.set("embed","1");location.replace(`../?${q}`);</script>' > _site/embed/index.html
 
-          printf '%s\n' '{"status":"ok","release":"0.4.0-public-preview","project":"guilin-yangtang","host":"github-pages"}' > _site/health.json
+          printf '%s\n' '{"status":"ok","release":"0.4.1-public-preview","project":"guilin-yangtang","dem_grid_m":12.5,"host":"github-pages"}' > _site/health.json
           printf '%s\n' 'User-agent: *' 'Allow: /' > _site/robots.txt
           touch _site/.nojekyll
 
-          grep -q '0.4.0-public-preview' _site/project-config.json
-          grep -q '桂林秧塘机场地形工程' _site/index.html
+          grep -q '0.4.1-public-preview' _site/project-config.json
+          grep -q '12.5 米 DEM' _site/index.html
+          grep -q 'core_12_5m_fallback' _site/index.html
           test -s _site/architecture/index.html
           test -s _site/architecture/app.js
 
