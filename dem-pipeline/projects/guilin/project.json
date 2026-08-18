@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.1.0",
+  "schemaVersion": "0.1.1",
   "id": "guilin",
   "name": "Guilin DEM Terrain",
   "status": "gaea-ready",
@@ -10,13 +10,15 @@
   "core": {
     "targetKm2": 36,
     "center": null,
-    "nativeDemPreferredMeters": 12.99
+    "higherResolutionSearchMaxMetersExclusive": 12.5
   },
   "dem": {
-    "regionalTargetMeters": 13,
+    "regionalTargetMeters": 12.5,
     "licensePolicy": "free-and-usable",
-    "regionalSource": null,
-    "coreSource": null
+    "regionalSource": "registered-user-confirmed-asf-vertex-12.5m-dem",
+    "regionalSourceMetadataStatus": "awaiting-downloaded-file-metadata-registration",
+    "coreSource": null,
+    "sourceLineagePolicy": "store-pixel-spacing-and-source-dem-lineage-separately"
   },
   "pipeline": {
     "gaeaExecution": "private-windows-worker",
@@ -30,7 +32,9 @@
   },
   "publishing": {
     "viewer": "threejs-webgpu",
-    "productionUrl": "https://guilin-dem-terrain.sunhaihao.chatgpt.site",
-    "proofUrl": "https://guilin-dem-terrain.sunhaihao.chatgpt.site/guilin/gaea-proof"
+    "productionUrl": "https://wd7nr89wty-dot.github.io/Haihao/",
+    "proofUrl": "https://wd7nr89wty-dot.github.io/Haihao/guilin/gaea-proof/",
+    "legacyViewerUrl": "https://guilin-dem-terrain.sunhaihao.chatgpt.site",
+    "legacyProofUrl": "https://guilin-dem-terrain.sunhaihao.chatgpt.site/guilin/gaea-proof"
   }
 }
